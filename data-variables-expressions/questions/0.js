@@ -11,3 +11,5 @@ name = "Paul";
 console.log(name);
 
 // jot your thoughts down here...
+
+// Nothing will be printed, then on the next line Paul will be printed.

@@ -6,3 +6,5 @@
 
 const name = "Samuel Caine;
 console.log(name);
+
+// Some error printed because of missing closing quotes.

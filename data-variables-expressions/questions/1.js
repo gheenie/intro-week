@@ -6,3 +6,5 @@
 
 const name = "Anat";
 console.log(nam);
+
+// Error: variable not declared will be printed.

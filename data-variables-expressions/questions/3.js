@@ -6,3 +6,5 @@
 
 const firstName = "Toni";
 firstName = "Tony";
+
+// Error about firstName being unable to be reassigned.

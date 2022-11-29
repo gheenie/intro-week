@@ -7,3 +7,5 @@
 const meaningOfLife = 42;
 
 console.log(meaningOfLife.toUpperCase());
+
+// Error on toUpperCase() executing because meaningOfLife is not a string.
