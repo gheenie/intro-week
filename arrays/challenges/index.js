@@ -69,12 +69,14 @@ skipTest("isEmptyArray() checks if an array is empty", function () {
   check(isEmptyArray(["a"])).isEqualTo(false);
 });
 
-function howManyArguments() {
+function howManyArguments(...args) {
   // This function should take any number of arguments and return the number of arguments passed into the function
   // HINT: For this one you should look up 'rest parameters' online - MDN Web Docs and devdocs are excellent sources of JavaScript documentation
+
+  return args.length;
 }
 
-skipTest("howManyArguments() returns the number of items passed on a single call", function () {
+runTest("howManyArguments() returns the number of items passed on a single call", function () {
   check(howManyArguments("a", "b", "c")).isEqualTo(3);
   check(howManyArguments()).isEqualTo(0);
   check(howManyArguments(1, 2, 3, 4, 5)).isEqualTo(5);
