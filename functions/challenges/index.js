@@ -168,13 +168,14 @@ skipTest('createPercentage() creates a percentage string in the form "--%"', fun
   check(createPercentage(1, 7)).isEqualTo("14%");
 });
 
-/*
-extractNumber()
 
-This function should take a string containing a number wrapped in a pair of round brackets  and return said number
-*/
+function extractNumber(string) {
+  //This function should take a string containing a number wrapped in a pair of round brackets  and return said number
 
-skipTest("extractNumber() should return the number buried inside a string", function () {
+  return parseInt( string.match(/\((\d+)\)/)[1] );
+}
+
+runTest("extractNumber() should return the number buried inside a string", function () {
   check(extractNumber("lasjdasasj(123)asljdlajk")).isEqualTo(123);
   check(extractNumber("qwasdaoyer(44687)iuwyeibasdahgsd")).isEqualTo(44687);
   check(extractNumber("qwasdasdfsyer(19827)iusdfsdfsd")).isEqualTo(19827);

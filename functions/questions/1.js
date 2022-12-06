@@ -8,3 +8,5 @@ function double(num) {
 
 const result1 = double(10);
 console.log(result1);
+
+// Undefined because no return statement in the function.

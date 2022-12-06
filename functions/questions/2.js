@@ -10,5 +10,9 @@ function sum(a, b, c) {
 // How many parameters are there in this function declaration?
 // What is the return value ?
 
+// 3. 124.
+
 const output1 = sum(100, 20, 4);
 // What are the arguments for this function call / invocation?
+
+console.log(output1);
