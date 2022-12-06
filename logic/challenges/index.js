@@ -11,6 +11,17 @@ When you're ready to move on to the next function replace skipTest with runTest.
 
 function isBiggerThan10(num) {
   // This function should take a number as an argument, and return an appropriate message based on that number's relationship to the number 10
+  if (num < 10) {
+    return 'Number ' + num + ' is less than 10';
+  }
+
+  if (num === 10) {
+    return 'Number 10 is equal to 10';
+  }
+
+  if (num > 10) {
+    return 'Number ' + num + ' is more than 10';
+  }
 }
 
 runTest("isBiggerThan10() returns a message indicating if a number is bigger than 10", function () {
@@ -24,9 +35,13 @@ runTest("isBiggerThan10() returns a message indicating if a number is bigger tha
 
 function isFalsy(value) {
   // This function should take any value as an argument, and return true if it is falsy, and false otherwise
+
+  if (value) return false;
+
+  return true;
 }
 
-skipTest("isFalsy() returns true if a value is falsy and false if it is truthy", function () {
+runTest("isFalsy() returns true if a value is falsy and false if it is truthy", function () {
   check(isFalsy(false)).isEqualTo(true);
   check(isFalsy("")).isEqualTo(true);
   check(isFalsy(0)).isEqualTo(true);
@@ -40,9 +55,17 @@ function readTrafficLight(lightColour) {
   // This function should take a string representing a traffic light colour as an argument
   // It will be one of "red", "green" or "amber" in either uppercase or lowercase
   // You should return a corresponding message
+
+  const lowercaseLightColour = lightColour.toLowerCase();
+
+  if (lowercaseLightColour === 'green') return 'GO!';
+
+  if (lowercaseLightColour === 'amber') return 'GET READY...';
+
+  if (lowercaseLightColour === 'red') return 'STOP!';
 }
 
-skipTest("readTrafficLight() should print a message according to the different colour passed in", function () {
+runTest("readTrafficLight() should print a message according to the different colour passed in", function () {
   check(readTrafficLight("green")).isEqualTo("GO!");
   check(readTrafficLight("GREEN")).isEqualTo("GO!");
 
