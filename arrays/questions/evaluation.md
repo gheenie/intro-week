@@ -28,6 +28,8 @@ c) `3`
 
 d) `4`
 
+d
+
 ---
 
 ## Question 1
@@ -51,6 +53,8 @@ c) `c`, `a`, `b`
 
 d) `a`, `c`, `b`
 
+a
+
 ---
 
 ## Question 2
@@ -69,6 +73,8 @@ b) `3`
 c) `4`
 
 d) Won't work - will throw a `SyntaxError`
+
+c
 
 ---
 
@@ -93,6 +99,8 @@ c) `"C"` will be printed to the `console`
 
 d) `"a`" will be printed to the `console`
 
+d
+
 ---
 
 ## Question 4
@@ -114,6 +122,8 @@ c) `100`
 
 d) `undefined`
 
+b
+
 ---
 
 ## Question 5
@@ -133,6 +143,8 @@ c) Will print `[]`
 
 d) Will throw an `Error`
 
+a
+
 **Part 2** What will happen when the following piece of code is executed?
 
 ```js
@@ -147,5 +159,7 @@ b) Will print `0`
 c) Will print `[]`
 
 d) Will throw an `Error`
+
+d
 
 ---
