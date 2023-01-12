@@ -15,6 +15,10 @@ modulo()
 This function should take two arguments a and b, and return the remainder of the division of a / b
 */
 
+function modulo(a, b) {
+  return a % b;
+}
+
 runTest("modulo() returns the correct remainder", function () {
   check(modulo(10, 2)).isEqualTo(0);
   check(modulo(119, 10)).isEqualTo(9);
@@ -27,7 +31,11 @@ squareRoot()
 This function should take a single argument and return its square root
 */
 
-skipTest("squareRoot() returns the square root of a positive integer", function () {
+function squareRoot(num) {
+  return Math.sqrt(num);
+}
+
+runTest("squareRoot() returns the square root of a positive integer", function () {
   check(squareRoot(100)).isEqualTo(10);
   check(squareRoot(25)).isEqualTo(5);
   check(squareRoot(121)).isEqualTo(11);
@@ -39,7 +47,11 @@ raiseToPower()
 This function should take two arguments, m and n, and return m raised to the power of n
 */
 
-skipTest("raiseToPower() raises given number to the given power", function () {
+function raiseToPower(m, n) {
+  return Math.pow(m, n);
+}
+
+runTest("raiseToPower() raises given number to the given power", function () {
   check(raiseToPower(10, 3)).isEqualTo(1000);
   check(raiseToPower(25, 2)).isEqualTo(625);
   check(raiseToPower(10, 0)).isEqualTo(1);
@@ -50,7 +62,12 @@ capitaliseFirstLetter()
 
 This function should take a string as an argument and return the same string with the first letter capitalised
 */
-skipTest("capitaliseFirstLetter() capitalises the first letter in a string", function () {
+
+function capitaliseFirstLetter(str) {
+  return str[0].toUpperCase() + str.substr(1, str.length);
+}
+
+runTest("capitaliseFirstLetter() capitalises the first letter in a string", function () {
   check(capitaliseFirstLetter("bang")).isEqualTo("Bang");
   check(capitaliseFirstLetter("apple")).isEqualTo("Apple");
   check(capitaliseFirstLetter("coding")).isEqualTo("Coding");
@@ -64,7 +81,11 @@ This function should take two arguments and return true if they are *strictly* e
 NOTE: you can complete this problem without resorting to if statements!
 */
 
-skipTest("areValuesEqual() checks if two values are strictly equal", function () {
+function areValuesEqual(val1, val2) {
+  return Object.is(val1, val2);
+}
+
+runTest("areValuesEqual() checks if two values are strictly equal", function () {
   check(areValuesEqual(10, 10)).isEqualTo(true);
   check(areValuesEqual("hello", "hello")).isEqualTo(true);
   check(areValuesEqual("good", "bad")).isEqualTo(false);
@@ -79,7 +100,11 @@ This function should take a number as an argument representing a year, and retur
 NOTE: you can complete this problem without resorting to if statements!
 */
 
-skipTest("isFromThe60s() checks if a number is within 1960 to 1969 (inclusive)", function () {
+function isFromThe60s(num) {
+  return String(num).substr(0, 3) === '196';
+}
+
+runTest("isFromThe60s() checks if a number is within 1960 to 1969 (inclusive)", function () {
   check(isFromThe60s(1962)).isEqualTo(true);
   check(isFromThe60s(1965)).isEqualTo(true);
   check(isFromThe60s(1970)).isEqualTo(false);
@@ -95,7 +120,11 @@ isEvenLength()
 This function should take a string as an argument and return true if its length is even, and false otherwise
 */
 
-skipTest("isEvenLength() checks if string has even number of characters", function () {
+function isEvenLength(str) {
+  return str.length % 2 === 0;
+}
+
+runTest("isEvenLength() checks if string has even number of characters", function () {
   check(isEvenLength("hello")).isEqualTo(false);
   check(isEvenLength("northcoders")).isEqualTo(false);
   check(isEvenLength("abcd")).isEqualTo(true);
@@ -110,7 +139,11 @@ This function should take a string as an argument representing a file path and r
 HINT: all absolute file paths start with a /
 */
 
-skipTest("isAbsolutePath() checks if a file path is absolute or relative", function () {
+function isAbsolutePath(filePath) {
+  return filePath[0] === '/';
+}
+
+runTest("isAbsolutePath() checks if a file path is absolute or relative", function () {
   check(isAbsolutePath("/Users/mitch")).isEqualTo(true);
   check(isAbsolutePath("/Users/mitch/northcoders/remote_course/remote_precourse_1")).isEqualTo(true);
   check(isAbsolutePath("../composers")).isEqualTo(false);
@@ -125,12 +158,20 @@ This function should take a string as an argument and return the middle (or midd
 NOTE: you could use the ternary operator for this challenge
 */
 
-skipTest("getMiddle() returns the middle character in a string of odd length", function () {
+function getMiddle(str) {
+  if (str.length % 2 === 1) {
+    return str[Math.floor(str.length / 2)];
+  }
+
+  return str.substr(str.length / 2 - 1, 2);
+}
+
+runTest("getMiddle() returns the middle character in a string of odd length", function () {
   check(getMiddle("abc")).isEqualTo("b");
   check(getMiddle("mitch")).isEqualTo("t");
 });
 
-skipTest("getMiddle() returns the middle characters in a string of even length", function () {
+runTest("getMiddle() returns the middle characters in a string of even length", function () {
   check(getMiddle("abcd")).isEqualTo("bc");
   check(getMiddle("blob")).isEqualTo("lo");
 });
@@ -145,7 +186,11 @@ The returned string should be in the following format:
 "The ASCII code for <character> is <character-code>"
 */
 
-skipTest("getCharCode() will return a message stating the ASCII code of a passed char", function () {
+function getCharCode(str) {
+  return `The ASCII code for ${str} is ${str.charCodeAt()}`;
+}
+
+runTest("getCharCode() will return a message stating the ASCII code of a passed char", function () {
   check(getCharCode("A")).isEqualTo("The ASCII code for A is 65");
   check(getCharCode("b")).isEqualTo("The ASCII code for b is 98");
   check(getCharCode("z")).isEqualTo("The ASCII code for z is 122");
@@ -160,7 +205,11 @@ createPercentage()
 This function should take two numbers, a and b, and return a string representing the value of a as a percentage of b
 */
 
-skipTest('createPercentage() creates a percentage string in the form "--%"', function () {
+function createPercentage(a, b) {
+  return `${ Math.round(a / b * 100) }%`;
+}
+
+runTest('createPercentage() creates a percentage string in the form "--%"', function () {
   check(createPercentage(1, 2)).isEqualTo("50%");
   check(createPercentage(50, 100)).isEqualTo("50%");
   check(createPercentage(2, 3)).isEqualTo("67%");
