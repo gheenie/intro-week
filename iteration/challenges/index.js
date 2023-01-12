@@ -11,6 +11,14 @@ When you're ready to move on to the next function replace skipTest with runTest.
 
 function makeAllUpperCase(arr) {
   // This function should take an array of strings as an argument and return an array consisting of the same strings in upper case (retaining the order)
+  
+  const cappedString = [];
+  
+  for (let i = 0; i < arr.length; i++) {
+    cappedString.push(arr[i].toUpperCase());
+  }
+
+  return cappedString;
 }
 
 runTest("makeAllUpperCase() can convert all strings to upper case", function () {
@@ -20,18 +28,36 @@ runTest("makeAllUpperCase() can convert all strings to upper case", function () 
 
 function collectStrings(arr) {
   // This function should take an array as an argument and return an array containing all string elements from the input (retaining the order)
+  
+  const stringsOnly = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'string') stringsOnly.push(arr[i]);
+  }
+
+  return stringsOnly;
 }
 
-skipTest("collectStrings() can get all the strings from an array", function () {
+runTest("collectStrings() can get all the strings from an array", function () {
   check(collectStrings(["a", "b", "c"])).isEqualTo(["a", "b", "c"]);
   check(collectStrings(["a", 10, "b", 1000, "c"])).isEqualTo(["a", "b", "c"]);
 });
 
 function getEvenNumbers(arr) {
   // This function should take an array of numbers as an argument and return an array containing all even numbers from the input (retaining the order)
+
+  const evenNumsOnly = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+
+    if (num % 2 === 0) evenNumsOnly.push(num);
+  }
+
+  return evenNumsOnly;
 }
 
-skipTest("getEvenNumbers() can get all the even numbers from an array of numbers", function () {
+runTest("getEvenNumbers() can get all the even numbers from an array of numbers", function () {
   check(getEvenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).isEqualTo([2, 4, 6, 8, 10]);
   check(getEvenNumbers([9, 100, 13, 20])).isEqualTo([100, 20]);
   check(getEvenNumbers([78, 5, 9, 11, 24])).isEqualTo([78, 24]);
@@ -39,9 +65,19 @@ skipTest("getEvenNumbers() can get all the even numbers from an array of numbers
 
 function collectPlurals(arr) {
   // This function should take an array of strings as an argument and return an array containing all strings ending with an 's' from the input (retaining the order)
+
+  const plurals = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const word = arr[i];
+    
+    if (word.at(-1) === 's') plurals.push(word);
+  }
+
+  return plurals;
 }
 
-skipTest("collectPlurals() can collect all the strings ending in an s", function () {
+runTest("collectPlurals() can collect all the strings ending in an s", function () {
   check(collectPlurals(["dogs", "cat", "apples", "kittens", "kiwi"])).isEqualTo(["dogs", "apples", "kittens"]);
   check(collectPlurals(["abcs", "humans", "thoughts", "cloud", "computer", "cups"])).isEqualTo([
     "abcs",
@@ -53,9 +89,11 @@ skipTest("collectPlurals() can collect all the strings ending in an s", function
 
 function createArray(length, char) {
   // This function should take a length and a character as arguments and return an array of the given length populated with the given character
+
+  return Array(length).fill(char);
 }
 
-skipTest("createArray() creates an array of the specified length using a specified character", function () {
+runTest("createArray() creates an array of the specified length using a specified character", function () {
   check(createArray(3, "!")).isEqualTo(["!", "!", "!"]);
   check(createArray(5, "a")).isEqualTo(["a", "a", "a", "a", "a"]);
 });
@@ -66,9 +104,15 @@ function deleteManyPasswords(arr) {
   Each user will be an object with a 'name' and 'password' property
   You should return an array of user objects each with the 'password' property removed (retaining the order)
   */
+
+  for (let i = 0; i < arr.length; i++) {
+    delete arr[i].password;
+  }
+
+  return arr;
 }
 
-skipTest("deleteManyPasswords() deletes the password property for each user", function () {
+runTest("deleteManyPasswords() deletes the password property for each user", function () {
   check(
     deleteManyPasswords([
       { name: "Barry", password: "ilovetea" },
@@ -80,9 +124,19 @@ skipTest("deleteManyPasswords() deletes the password property for each user", fu
 
 function collectTheVowels(str) {
   // This function should take a string as its argument and return a string consisting of all vowels found in the input (retaining the order)
+
+  let onlyVowels = '';
+  
+  for (let i = 0; i < str.length; i++) {
+    const letter = str[i];
+
+    if (letter === 'a' || letter === 'e' || letter === 'i' || letter === 'o' || letter === 'u') onlyVowels += letter;
+  }
+
+  return onlyVowels;
 }
 
-skipTest(
+runTest(
   "collectTheVowels() takes a string of many letters and returns a string containing those vowels in correct order",
   function () {
     check(collectTheVowels("a")).isEqualTo("a");
@@ -94,9 +148,23 @@ skipTest(
 
 function containsNoRepeats(str) {
   // This function should take a string as its argument and return true if each character appears only once and false otherwise
+
+  const appearedChars = [];
+
+  for (let i = 0; i < str.length; i++) {
+    letter = str[i];
+
+    for (let j = 0; j < appearedChars.length; j++) {
+      if (appearedChars[j] === letter) return false;
+    }
+
+    appearedChars.push(letter);
+  }
+
+  return true;
 }
 
-skipTest(
+runTest(
   "containsNoRepeats() takes a string and returns true if each character only appears once in the string",
   function () {
     check(containsNoRepeats("dog")).isEqualTo(true);
