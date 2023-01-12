@@ -10,4 +10,8 @@
 
 // You don't need to use loops for this one! :)
 
-function makeRectangle() {}
+function makeRectangle(col, row) {
+    console.log( ( '* '.repeat(col) + '\n' ).repeat(row) );
+}
+
+makeRectangle(3, 5);
