@@ -16,6 +16,10 @@ makeAllUpperCase()
 This function should take an array of strings as an argument, and return an array of those strings capitalised
 */
 
+function makeAllUpperCase(strings) {
+  return strings.map((string) => string.toUpperCase());
+}
+
 runTest("makeAllUpperCase() returns an array of capitalised strings", function () {
   check(makeAllUpperCase(["a", "b", "c"])).isEqualTo(["A", "B", "C"]);
   check(makeAllUpperCase(["I", "love", "coding"])).isEqualTo(["I", "LOVE", "CODING"]);
@@ -28,7 +32,11 @@ This function should take an array containing various data types as an argument,
 
 */
 
-skipTest("collectStrings() can get all the strings from an array", function () {
+function collectStrings(arr) {
+  return arr.filter((item) => typeof item === 'string');
+}
+
+runTest("collectStrings() can get all the strings from an array", function () {
   check(collectStrings(["a", "b", "c"])).isEqualTo(["a", "b", "c"]);
   check(collectStrings(["a", 10, "b", 1000, "c"])).isEqualTo(["a", "b", "c"]);
   check(collectStrings([true, "hello", 45, "there", false])).isEqualTo(["hello", "there"]);
@@ -41,7 +49,11 @@ getEvenNumbers()
 This function should take an array of numbers as an argument, and return an array of only the even numbers
 */
 
-skipTest("getEvenNumbers() can get all the even numbers from an array of numbers", function () {
+function getEvenNumbers(nums) {
+  return nums.filter((num) => num % 2 === 0);
+}
+
+runTest("getEvenNumbers() can get all the even numbers from an array of numbers", function () {
   check(getEvenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).isEqualTo([2, 4, 6, 8, 10]);
   check(getEvenNumbers([9, 100, 13, 20])).isEqualTo([100, 20]);
 });
@@ -52,7 +64,11 @@ collectPlurals()
 This function should take an array of strings as an argument, and return an array of the strings ending with an "s" (retaining the order)
 */
 
-skipTest("collectPlurals() can collect all the strings ending in an s", function () {
+function collectPlurals(strings) {
+  return strings.filter((string) => string.at(-1) === 's');
+}
+
+runTest("collectPlurals() can collect all the strings ending in an s", function () {
   check(collectPlurals(["dogs", "cat", "apples", "kittens", "kiwi"])).isEqualTo(["dogs", "apples", "kittens"]);
   check(collectPlurals(["abcs", "humans", "thoughts", "cloud", "computer", "cups"])).isEqualTo([
     "abcs",
@@ -69,7 +85,11 @@ This function should take a number and a string as its arguments, and return an 
 NOTE: you may want to use an array method that isn't a *Higher Order Function* here
 */
 
-skipTest("createArray() creates an array of the specified length using a specified character", function () {
+function createArray(count, char) {
+  return Array(count).fill(char);
+}
+
+runTest("createArray() creates an array of the specified length using a specified character", function () {
   check(createArray(3, "!")).isEqualTo(["!", "!", "!"]);
   check(createArray(5, "a")).isEqualTo(["a", "a", "a", "a", "a"]);
   check(createArray(7, "X")).isEqualTo(["X", "X", "X", "X", "X", "X", "X"]);
@@ -87,7 +107,15 @@ A user object will take the form:
 Your function should return an array of user objects, each with their password property removed
 */
 
-skipTest("deleteManyPasswords() deletes the password property for each user", function () {
+function deleteManyPasswords(users) {
+  return users.map((user) => {
+    delete user.password;
+    
+    return user;
+  });
+}
+
+runTest("deleteManyPasswords() deletes the password property for each user", function () {
   check(
     deleteManyPasswords([
       { name: "Barry", password: "ilovetea" },
@@ -103,7 +131,15 @@ countTheObjects()
 This function should take an array containing various data types as an argument, and return a count of how many elements are objects
 */
 
-skipTest("countTheObjects() counts all the objects in an array of multi-type items", function () {
+function countTheObjects(arr) {
+  return arr.reduce((count, item) => {
+    if (typeof item === 'object') return count + 1;
+
+    return count;
+  }, 0);
+}
+
+runTest("countTheObjects() counts all the objects in an array of multi-type items", function () {
   check(
     countTheObjects([
       { name: "Barry", password: "ilovetea" },
@@ -129,7 +165,11 @@ A till object will take the form:
 Your function should return an array of the till objects that have no elements in their checkout array
 */
 
-skipTest("getEmptyTills() gets all the tills that are empty", function () {
+function getEmptyTills(tills) {
+  return tills.filter((till) => !till.checkout.length);
+}
+
+runTest("getEmptyTills() gets all the tills that are empty", function () {
   const tills = [
     {
       name: "John",
