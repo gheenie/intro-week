@@ -11,6 +11,8 @@ When you're ready to move on to the next function replace skipTest with runTest.
 
 function getLastItem(arr) {
   // This function should take an array as an argument and return the last item from it
+
+  return arr[arr.length - 1];
 }
 
 runTest("getLastItem() returns the last item in an array", function () {
@@ -20,9 +22,11 @@ runTest("getLastItem() returns the last item in an array", function () {
 
 function getLastNItems(arr, n) {
   // This function should take two arguments, an array and a number n, and return a new array containing the last n items of the given array
+  
+  return arr.slice(arr.length - n);
 }
 
-skipTest("getLastNItems() returns the last n items in an array", function () {
+runTest("getLastNItems() returns the last n items in an array", function () {
   check(getLastNItems(["a", "b", "c", "d"], 2)).isEqualTo(["c", "d"]);
   check(getLastNItems(["apple", "banana", "pear", "kiwi"], 0)).isEqualTo([]);
   check(getLastNItems(["apple", "banana", "pear", "kiwi"], 3)).isEqualTo(["banana", "pear", "kiwi"]);
@@ -30,9 +34,13 @@ skipTest("getLastNItems() returns the last n items in an array", function () {
 
 function removeItem(arr, n) {
   // This function should take two arguments, an array and a number n, and return a new array without the item at index 'n'
+
+  arr.splice(n, 1);
+
+  return arr;
 }
 
-skipTest("removeItem() removes an item at a given index", function () {
+runTest("removeItem() removes an item at a given index", function () {
   check(removeItem(["a", "b", "c", "d"], 2)).isEqualTo(["a", "b", "d"]);
   check(removeItem(["a", "b", "c", "d"], 0)).isEqualTo(["b", "c", "d"]);
   check(removeItem(["a", "b", "c", "d"], 1)).isEqualTo(["a", "c", "d"]);
@@ -40,9 +48,11 @@ skipTest("removeItem() removes an item at a given index", function () {
 
 function mergeArrays(arr1, arr2) {
   // This function should take two arrays as arguments and return a new array containing all of arr1 and arr2's elements (in that order)
+  
+  return arr1.concat(arr2);
 }
 
-skipTest("mergeArrays() will concatenate two arrays together", function () {
+runTest("mergeArrays() will concatenate two arrays together", function () {
   check(mergeArrays(["a", "b"], ["c", "d"])).isEqualTo(["a", "b", "c", "d"]);
   check(mergeArrays([1], [3, 5, 7])).isEqualTo([1, 3, 5, 7]);
   check(mergeArrays(["x", "y", "z"], [1, 2, 3, 4])).isEqualTo(["x", "y", "z", 1, 2, 3, 4]);
@@ -51,9 +61,14 @@ skipTest("mergeArrays() will concatenate two arrays together", function () {
 function getSandwichFilling(sandwich) {
   // If an array is like a sandwich, the first and last items are the bread
   // This function should take an array as an argument and return an array containing the filling of the sandwich
+
+  sandwich.pop();
+  sandwich.shift();
+
+  return sandwich;
 }
 
-skipTest("getSandwichFilling() returns the inner elements of an array", function () {
+runTest("getSandwichFilling() returns the inner elements of an array", function () {
   check(getSandwichFilling(["a", "b", "c", "d"])).isEqualTo(["b", "c"]);
   check(getSandwichFilling([10, 20, 30, 40, 50, 60])).isEqualTo([20, 30, 40, 50]);
   check(getSandwichFilling(["northcoders", "are", "the", "best"])).isEqualTo(["are", "the"]);
@@ -61,9 +76,11 @@ skipTest("getSandwichFilling() returns the inner elements of an array", function
 
 function isEmptyArray(arr) {
   // This function should take an array as an argument and return true if the array is empty, and false otherwise
+
+  return (arr.length === 0 ? true : false);
 }
 
-skipTest("isEmptyArray() checks if an array is empty", function () {
+runTest("isEmptyArray() checks if an array is empty", function () {
   check(isEmptyArray([])).isEqualTo(true);
   check(isEmptyArray(["a", "b", "c", "d"])).isEqualTo(false);
   check(isEmptyArray(["a"])).isEqualTo(false);
@@ -92,9 +109,26 @@ function updatePosition(coords, direction) {
   If the direction is "right" it should move 1 unit right (+ 1 in the x direction)
   If the direction is "left" it should move 1 unit left (- 1 in the x direction)
   */
+
+  switch (direction) {
+    case 'up':
+      coords[1] += 1;
+      break;
+    case 'down':
+      coords[1] -= 1;
+      break;
+    case 'left':
+      coords[0] -= 1;
+      break;
+    case 'right':
+      coords[0] += 1;
+      break;
+  }
+
+  return coords;
 }
 
-skipTest("updatePosition() updates a co-ordinates array", function () {
+runTest("updatePosition() updates a co-ordinates array", function () {
   check(updatePosition([10, 10], "up")).isEqualTo([10, 11]);
   check(updatePosition([0, 0], "down")).isEqualTo([0, -1]);
   check(updatePosition([3, 3], "left")).isEqualTo([2, 3]);
@@ -109,9 +143,26 @@ function addCoins(collection, coin) {
 
   This should take two arguments, a coin collection array and a string representing a coin, and return an updated version of the given array with the coin added at the appropriate position
   */
+
+  switch (coin) {
+    case '1p':
+      collection[0].push(coin);
+      break;
+    case '2p':
+      collection[1].push(coin);
+      break;
+    case '5p':
+      collection[2].push(coin);
+      break;
+    case '10p':
+      collection[3].push(coin);
+      break;
+  }
+
+  return collection;
 }
 
-skipTest("addCoins() will update the coins in a given slot", function () {
+runTest("addCoins() will update the coins in a given slot", function () {
   check(addCoins([[], [], [], []], "1p")).isEqualTo([["1p"], [], [], []]);
   check(addCoins([[], [], [], []], "2p")).isEqualTo([[], ["2p"], [], []]);
   check(addCoins([[], ["2p"], [], []], "2p")).isEqualTo([[], ["2p", "2p"], [], []]);
@@ -128,15 +179,19 @@ function accessItem(arr, index) {
 
   For examples of this behaviour, look at the second group of tests below
   */
+
+  const loopedIndex = index % arr.length;
+
+  return arr[loopedIndex];
 }
 
-skipTest("accessItem() can access an item inside in an array with a given index below the array length", function () {
+runTest("accessItem() can access an item inside in an array with a given index below the array length", function () {
   check(accessItem(["a", "b", "c", "d"], 2)).isEqualTo("c");
   check(accessItem(["a", "b", "c", "d"], 0)).isEqualTo("a");
   check(accessItem(["a", "b", "c", "d"], 3)).isEqualTo("d");
 });
 
-skipTest(
+runTest(
   "accessItem() can access an item inside in an array with an index equal to or above the array length",
   function () {
     check(accessItem(["a", "b", "c", "d"], 4)).isEqualTo("a");
@@ -148,9 +203,13 @@ skipTest(
 
 function findDayOfTheWeek(num) {
   // This function should take a number from 1 to 7 inclusive, and return a string of the corresponding day of the week
+
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  return daysOfWeek[num - 1];
 }
 
-skipTest("findDayOfTheWeek() returns the day of the week given a passed number", function () {
+runTest("findDayOfTheWeek() returns the day of the week given a passed number", function () {
   check(findDayOfTheWeek(2)).isEqualTo("Tuesday");
   check(findDayOfTheWeek(3)).isEqualTo("Wednesday");
   check(findDayOfTheWeek(1)).isEqualTo("Monday");
