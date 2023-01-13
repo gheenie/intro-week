@@ -4,3 +4,6 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+// referenceerror, variable already initialised
+// wrong. syntaxerror. declaration not initialisation

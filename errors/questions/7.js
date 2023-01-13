@@ -4,3 +4,6 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+// referenceerror, string has no push method
+// wrong. typeerror

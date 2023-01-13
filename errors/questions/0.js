@@ -4,3 +4,5 @@ try {
 } catch (error) {
   console.log(error, "<--- error");
 }
+
+// typeerror, invoking a function but it isn't one

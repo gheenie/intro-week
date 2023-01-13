@@ -4,3 +4,5 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+// typeerror, not an object
